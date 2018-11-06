@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CreateSuraimu : MonoBehaviour {
     public Transform[] SuraimuPrefab;
+    public bool GameOver = false;
     bool CanCreate=false;
     int i;
 
@@ -15,12 +16,22 @@ public class CreateSuraimu : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (GameObject.FindGameObjectsWithTag("Red").Length + GameObject.FindGameObjectsWithTag("Yellow").Length +
-        GameObject.FindGameObjectsWithTag("Blue").Length + GameObject.FindGameObjectsWithTag("Green").Length < 2)
+        if (!GameOver)
         {
-           Instantiate(SuraimuPrefab[Random.Range(0, 4)], new Vector3(Random.Range(9.0f, -4.0f), Random.Range(3.5f, -3.5f), 0), Quaternion.identity);
-           new WaitForSeconds(1.50f);  
+            if (GameObject.FindGameObjectsWithTag("Red").Length + GameObject.FindGameObjectsWithTag("Yellow").Length +
+        GameObject.FindGameObjectsWithTag("Blue").Length + GameObject.FindGameObjectsWithTag("Green").Length < 2)
+            {
+                Instantiate(SuraimuPrefab[Random.Range(0, 4)], new Vector3(Random.Range(9.0f, -4.0f), Random.Range(3.5f, -3.5f), 0), Quaternion.identity);
+                new WaitForSeconds(1.50f);
+            }
         }
+        else
+        {
+
+            Debug.Log("Bye");
+        }
+
+        
     }
     IEnumerator CreateS()
     {
