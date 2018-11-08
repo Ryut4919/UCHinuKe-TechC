@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TimerControl : MonoBehaviour {
     float timer = 60;
     Text TimerText;
-    bool gameClear = false;
+    public bool gameClear = false;
     public bool timer_over = false;
     
 
@@ -28,7 +28,8 @@ public class TimerControl : MonoBehaviour {
             {
                 timer = 0;
                 gameClear = true;
-                Debug.Log("Clear");
+                Debug.Log("GameClear");
+                //ShowWinScene
             }
         }
         

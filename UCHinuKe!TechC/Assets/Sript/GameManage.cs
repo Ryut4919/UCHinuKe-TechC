@@ -5,8 +5,11 @@ using UnityEngine.UI;
 
 public class GameManage : MonoBehaviour {
     public CreateSuraimu _suraimuCreate;
+    public GameObject ControlWLScene;
     public bool Over;
     public bool Clear;
+    bool _over = false;
+    bool Clearall = false;
 
     public  Text _text;
     public GameObject _timer;
@@ -27,18 +30,36 @@ public class GameManage : MonoBehaviour {
         {
             _text.text = "Start!!!";
         }
-        if (timer < -1)
+        if (timer < -1&&!Clearall)
         {
             _text.gameObject.SetActive(false);
             BigBig.SetActive(true);
             _timer.SetActive(true);
         }
-        //gameClear
-        if (Over)
+        
+        if (Over&& !_over)
         {
-           _timer.GetComponent<TimerControl>().timer_over = true;
-            _suraimuCreate.GameOver = true;
+            //gamelose
+            Debug.Log("GameOver");
+            _over = true;
+            _timer.GetComponent<TimerControl>().timer_over = true;
+            ControlWLScene.SetActive(true);
+            ControlWLScene.transform.GetChild(0).GetComponent<Text>().text = "ゲーム失敗";
+            ClearAll();
+           //call losescene;
         }
+        else if (_timer.GetComponent<TimerControl>().gameClear)
+        {
+            //game win
+            ControlWLScene.SetActive(true);
+            ControlWLScene.transform.GetChild(0).GetComponent<Text>().text = "クリアー";
+        }
+    }
 
+    void ClearAll()
+    {
+        Clearall = true;
+        BigBig.SetActive(false);
+        _timer.SetActive(false);
     }
 }

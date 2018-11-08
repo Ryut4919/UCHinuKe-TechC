@@ -6,6 +6,7 @@ public class CreateSuraimu : MonoBehaviour {
     public Transform[] SuraimuPrefab;
     public bool GameOver = false;
     bool CanCreate=false;
+    bool showBadEnding = true;
     int i;
 
 	// Use this for initialization
@@ -27,8 +28,13 @@ public class CreateSuraimu : MonoBehaviour {
         }
         else
         {
-
-            Debug.Log("Bye");
+            //失敗
+            if (showBadEnding)
+            {
+                Debug.Log("Bye");
+                showBadEnding = false;
+            }
+            
         }
 
         
