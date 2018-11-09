@@ -6,6 +6,7 @@ public class Scop : MonoBehaviour {
     
     Vector3 Dir;
     public float MoveSpd=5.0f;
+    public bool gamestop=false;
 	// Use this for initialization
 	void Start () {
         
@@ -15,15 +16,15 @@ public class Scop : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        var x = Input.GetAxis("JoyX") * MoveSpd;
-        var y = Input.GetAxis("JoyY") * MoveSpd;
+        if (!gamestop)
+        {
+            var x = Input.GetAxis("JoyX") * MoveSpd;
+            var y = Input.GetAxis("JoyY") * MoveSpd;
 
-        transform.Translate(new Vector2(x,y));
-        //Dir = new Vector3(x, y,0);
-        //if (Dir.sqrMagnitude > 0f)
-        //{
-        //    Vector3 Destination = transform.position + Dir.normalized * MoveSpd;
-        //    transform.position = Destination;
-        //}
+            transform.Translate(new Vector2(x, y));
+        }
+        else
+            return;
+
     }
 }

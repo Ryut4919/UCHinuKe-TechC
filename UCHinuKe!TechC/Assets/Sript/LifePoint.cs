@@ -7,9 +7,10 @@ public class LifePoint : MonoBehaviour {
     public CreateSuraimu _suraimuCreate;
     public GameObject _getdamagePanel;
     public bool DeleteLife = false;
+    public  int LifeP = 3;
     private bool GameOver = false;
     private bool getDamage = false;
-    private int LifeP = 3;
+    
     public new List<GameObject> Life = new List<GameObject>();
     GameObject Manager;
     
@@ -21,12 +22,15 @@ public class LifePoint : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+       // Debug.Log(Life.Count);
         if (DeleteLife && LifeP > 0 && !getDamage)
         {
             if (!getDamage)
             {
                 LifeP -= 1;
                 Destroy(Life[LifeP]);
+                //Life.Remove(Life[Life.Count - 1]);
+                
                 DeleteLife = false;
                 getDamage = true;
             }

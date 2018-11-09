@@ -46,12 +46,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Sript\CountDown.cs" />
      <Compile Include="Assets\Sript\CreateSuraimu.cs" />
+     <Compile Include="Assets\Sript\GameManage.cs" />
      <Compile Include="Assets\Sript\GetButton.cs" />
      <Compile Include="Assets\Sript\LifePoint.cs" />
      <Compile Include="Assets\Sript\Scop.cs" />
      <Compile Include="Assets\Sript\Suraimu.cs" />
+     <Compile Include="Assets\Sript\TimerControl.cs" />
+ <Reference Include="Facebook.Unity.Settings">
+ <HintPath>C:/Users/Ryut lai/Documents/GitHub/UCHinuKe-TechC/UCHinuKe!TechC/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

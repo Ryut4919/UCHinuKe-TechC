@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class TimerControl : MonoBehaviour {
-    float timer = 60;
+    [SerializeField]
+    private GameManage _Gm;
+    public float timer = 60;
     Text TimerText;
     public bool gameClear = false;
     public bool timer_over = false;
@@ -28,6 +30,7 @@ public class TimerControl : MonoBehaviour {
             {
                 timer = 0;
                 gameClear = true;
+                _Gm.Clear = true;
                 Debug.Log("GameClear");
                 //ShowWinScene
             }
