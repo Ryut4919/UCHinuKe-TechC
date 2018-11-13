@@ -1,20 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Suraimu : MonoBehaviour {
     [SerializeField]
-    private ParticleSystem _bingo;
+    private GameObject sumface;
+    [SerializeField]
+    private GameObject deathface;
     public bool TakeLife = false;
     public TimerControl gameOC;
     public bool IsDeath=false;
+    
     Vector2[] targetPosition;
     GameObject Target;
     Vector2 finalPos;
-
    
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 # region 最終到着点
         targetPosition = new Vector2[]
         {//最終到着点(x,y)(X_max=5.7,min=-5.5,y_max=4.5,mix=-4.5)
@@ -30,41 +33,46 @@ public class Suraimu : MonoBehaviour {
         Target = GameObject.Find("GameManager");
         gameOC = GameObject.Find("Timer").GetComponent<TimerControl>();
         finalPos = targetPosition[Random.Range(0, targetPosition.Length)];
-        
+        sumface = transform.GetChild(1).gameObject;
+        sumface.SetActive(true);
+        deathface = transform.GetChild(0).gameObject;
+        deathface.SetActive(false);
     }
 	
 	// Update is called once per frame
 	void Update () {
 
         #region 出ると最後方向
-        transform.localScale +=new Vector3(1.0f,1.0f,0)*Time.deltaTime;
-        transform.position = Vector2.Lerp(this.transform.position, finalPos, 0.3f * Time.deltaTime);
-        if (this.transform.localScale.x > 3.5f)
+        if (!IsDeath)
         {
-            TakeLife = true;
-            Target.GetComponent<LifePoint>().DeleteLife = true;
+            transform.localScale += new Vector3(1.0f, 1.0f, 0) * Time.deltaTime;
+            transform.position = Vector2.Lerp(this.transform.position, finalPos, 0.3f * Time.deltaTime);
+            if (this.transform.localScale.x > 3.5f)
+            {
+                TakeLife = true;
+                Target.GetComponent<LifePoint>().DeleteLife = true;
 
-        }
-        if (TakeLife ||/*game win*/gameOC.gameClear ||/*game lose*/ Target.GetComponent<GameManage>().Over)
-        {
-            Destroy(this.gameObject);
+            }
+            if (TakeLife ||/*game win*/gameOC.gameClear ||/*game lose*/ Target.GetComponent<GameManage>().Over)
+            {
+                Destroy(this.gameObject);
+            }
         }
         #endregion
 
-        if (IsDeath)
+        if (IsDeath) 
         {
-            if (!_bingo.isPlaying)
-            {
-                _bingo.Play();
-                Destroy(this.gameObject);
-            }
-           
-            
+            StartCoroutine("DeathPross",1f);
         }
-        //if (/*game win*/gameOC.gameClear ||/*game lose*/ Target.GetComponent<GameManage>().Over)
-        //{
-        //    Destroy(gameObject);
-        //}
 
+    }
+
+    IEnumerator DeathPross()
+    {
+        sumface.SetActive(false);
+        deathface.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        //自分削除
+        Destroy(gameObject);
     }
 }
