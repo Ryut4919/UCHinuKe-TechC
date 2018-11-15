@@ -43,12 +43,12 @@ public class GetButton : MonoBehaviour {
         {
             //Script Suraimu の方へ行きます
             other.gameObject.GetComponent<Suraimu>().IsDeath = true;
-           // Destroy(other.gameObject);
+            other.gameObject.GetComponent<Suraimu>().CSound();
         }
         else if(other.tag != "Red" && Input.GetKeyDown(KeyCode.Joystick1Button1) || other.tag != "Yellow" && Input.GetKeyDown(KeyCode.Joystick1Button3) ||
             other.tag != "Blue" && Input.GetKeyDown(KeyCode.Joystick1Button2) || other.tag != "Green" && Input.GetKeyDown(KeyCode.Joystick1Button0))
         {//間違えのボダンを押す場合
-            //Debug.Log("Wrong Effect");
+            other.gameObject.GetComponent<Suraimu>().WSound();
         }
     }
     

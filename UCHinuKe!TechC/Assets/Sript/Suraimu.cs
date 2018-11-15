@@ -11,6 +11,10 @@ public class Suraimu : MonoBehaviour {
     public bool TakeLife = false;
     public TimerControl gameOC;
     public bool IsDeath=false;
+
+    public AudioSource HitSound;
+    public AudioClip CurrentSound;
+    public AudioClip WrongSound;
     
     Vector2[] targetPosition;
     GameObject Target;
@@ -51,7 +55,6 @@ public class Suraimu : MonoBehaviour {
             {
                 TakeLife = true;
                 Target.GetComponent<LifePoint>().DeleteLife = true;
-
             }
             if (TakeLife ||/*game win*/gameOC.gameClear ||/*game lose*/ Target.GetComponent<GameManage>().Over)
             {
@@ -69,10 +72,49 @@ public class Suraimu : MonoBehaviour {
 
     IEnumerator DeathPross()
     {
+        //顔の変換
         sumface.SetActive(false);
         deathface.SetActive(true);
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.2f);
         //自分削除
         Destroy(gameObject);
+    }
+
+    public void CSound()
+    {   
+        # region ボダンが正しい場合
+            HitSound.clip = CurrentSound;
+            if (HitSound.isPlaying)
+            {
+                HitSound.Stop();
+                HitSound.pitch = 1;
+            }
+
+            if (!HitSound.isPlaying)
+            {
+                HitSound.pitch = 3;
+                HitSound.volume = 0.6f;
+                HitSound.Play();
+            }
+            #endregion
+    }
+
+    public void WSound()
+    {
+        #region ボダンが間違いました場合
+        HitSound.clip = WrongSound;
+        if (HitSound.isPlaying)
+        {
+            HitSound.Stop();
+            HitSound.pitch = 1;
+        }
+
+        if (!HitSound.isPlaying)
+        {
+            HitSound.pitch = 1;
+            HitSound.volume = 0.6f;
+            HitSound.Play();
+        }
+        #endregion
     }
 }
