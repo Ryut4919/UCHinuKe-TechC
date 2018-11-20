@@ -82,7 +82,7 @@ public class Suraimu : MonoBehaviour {
 
     public void CSound()
     {   
-        # region ボダンが正しい場合
+        # region ボダンが正しい場合の音楽
             HitSound.clip = CurrentSound;
             if (HitSound.isPlaying)
             {
@@ -101,7 +101,7 @@ public class Suraimu : MonoBehaviour {
 
     public void WSound()
     {
-        #region ボダンが間違いました場合
+        #region ボダンが間違いました場合の音楽
         HitSound.clip = WrongSound;
         if (HitSound.isPlaying)
         {

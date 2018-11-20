@@ -28,9 +28,7 @@ public class LifePoint : MonoBehaviour {
             if (!getDamage)
             {
                 LifeP -= 1;
-                Destroy(Life[LifeP]);
-                //Life.Remove(Life[Life.Count - 1]);
-                
+                Destroy(Life[LifeP]);                
                 DeleteLife = false;
                 getDamage = true;
             }

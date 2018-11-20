@@ -29,6 +29,10 @@ public class GameManage : MonoBehaviour {
         if (timer < 0)
         {
             _text.text = "Start!!!";
+            if (!GetComponent<AudioSource>().isPlaying)
+            {
+                GetComponent<AudioSource>().Play();
+            }
         }
         if (timer < -1&&!Clearall)
         {
