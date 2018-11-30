@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CreateSuraimu : MonoBehaviour {
     [SerializeField]
-    private TimerControl _timer;
+    private PointCheck _pointNum;
     public Transform[] SuraimuPrefab;
+    public int[] targetNum;
 
     public bool GameOver = false;
     bool CanCreate=false;
@@ -22,20 +23,29 @@ public class CreateSuraimu : MonoBehaviour {
     {
         if (!GameOver)
         {
+            #region 数調整
             //数、Xの最小範囲(-3)、Xの最大範囲(9.5)、Yの最小範囲(4.5)、Yの最大範囲(4.5)、出る時間
-
-            if (_timer.timer >= 40)
+            if (_pointNum.point <= targetNum[0])
             {
-                create(2, -2.0f, 3.0f, 2.5f, -2.5f, 1.0f);
+                create(1, -2.0f, 3.0f, 2.5f, -2.5f, 1.2f);
             }
-            else if (_timer.timer >= 20.0f && _timer.timer < 40.0f)
+            else if (_pointNum.point <= targetNum[1] && _pointNum.point > targetNum[0])
             {
-                create(3, -2.5f, 7.0f, 4.0f, -4.4f, 0.8f);
+                create(2, -2.5f, 7.0f, 4.0f, -4.4f, 1.0f);
             }
-            else if (_timer.timer < 20.0f)
+            else if (_pointNum.point <= targetNum[2] && _pointNum.point > targetNum[1])
             {
-                create(4, -3.0f, 9.5f, 4.5f, -5.0f, 0.5f);
+                create(2, -2.5f, 7.0f, 4.0f, -4.4f, 0.8f);
             }
+            else if (_pointNum.point <= targetNum[3] && _pointNum.point > targetNum[2])
+            {
+                create(3, -2.5f, 7.0f, 4.0f, -4.4f, 0.7f);
+            }
+            else if (_pointNum.point > targetNum[3])
+            {
+                create(4, -3.0f, 9.5f, 4.5f, -5.0f, 0.6f);
+            }
+            #endregion
         }
         else
         {

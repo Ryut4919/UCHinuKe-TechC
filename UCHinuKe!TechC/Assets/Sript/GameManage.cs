@@ -13,10 +13,10 @@ public class GameManage : MonoBehaviour {
     bool Clearall = false;
 
     [SerializeField]
-    //private GameObject _timer;
+    private GameObject _PointCount;
 
     public  Text _text;
-    public GameObject _timer;
+    public GameObject _pointChecking;
     float timer = 3;
     public GameObject BigBig;
     
@@ -38,34 +38,37 @@ public class GameManage : MonoBehaviour {
         {
             _text.gameObject.SetActive(false);
             BigBig.SetActive(true);
-            _timer.SetActive(true);
+            _PointCount.SetActive(true);
         }
         #endregion
-        #region gamoverOr
+        #region gameOver
         if (Over&& !_over)
         {
             //gamelose
+            _pointChecking.SetActive(false);
             Debug.Log("GameOver");
             _over = true;
-            _timer.GetComponent<TimerControl>().timer_over = true;
+            _pointChecking.GetComponent<PointCheck>().GameClear = true;
             ControlWLScene.SetActive(true);
             ControlWLScene.transform.GetChild(0).GetComponent<Text>().text = "ゲーム失敗";
             ClearAll();
            //call losescene;
         }
-        else if (_timer.GetComponent<TimerControl>().gameClear)
+        #endregion
+
+        #region Getpoint点数を取得
+        else if (_PointCount.GetComponent<PointCheck>().GameClear)
         {
+            
+            Debug.Log("ゲームクリアー！！");
             //game win
             _suraimuCreate.GameOver = true;
             ControlWLScene.SetActive(true);
             ControlWLScene.transform.GetChild(0).GetComponent<Text>().text = "ゲームクリアー！！";
-            _timer.GetComponent<Text>().text = "点数:" + GetComponent<LifePoint>().LifeP ;
-            _timer.GetComponent<Text>().color = Color.black;
+            ControlWLScene.transform.GetChild(1).GetComponent<Text>().text = "点数:" + GetComponent<LifePoint>().LifeP;
+            ControlWLScene.transform.GetChild(1).GetComponent<Text>().color = Color.black;
+            ClearAll();
         }
-        #endregion
-        
-        #region Getpoint点数を取得
-
         #endregion
     }
 
@@ -73,6 +76,6 @@ public class GameManage : MonoBehaviour {
     {
         Clearall = true;
         BigBig.SetActive(false);
-        _timer.SetActive(false);
+        _pointChecking.SetActive(false);
     }
 }

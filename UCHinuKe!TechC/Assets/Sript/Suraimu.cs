@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class Suraimu : MonoBehaviour {
+    
     [SerializeField]
     private GameObject sumface;
     [SerializeField]
     private GameObject deathface;
+    public GameObject _Star;
     public bool TakeLife = false;
-    public TimerControl gameOC;
+    public PointCheck gameOC;
     public bool IsDeath=false;
 
     public AudioSource HitSound;
@@ -35,12 +38,13 @@ public class Suraimu : MonoBehaviour {
 
         #endregion
         Target = GameObject.Find("GameManager");
-        gameOC = GameObject.Find("Timer").GetComponent<TimerControl>();
+        gameOC = GameObject.Find("CountPoint").GetComponent<PointCheck>();
         finalPos = targetPosition[Random.Range(0, targetPosition.Length)];
         sumface = transform.GetChild(1).gameObject;
         sumface.SetActive(true);
         deathface = transform.GetChild(0).gameObject;
         deathface.SetActive(false);
+        
     }
 	
 	// Update is called once per frame
@@ -56,7 +60,7 @@ public class Suraimu : MonoBehaviour {
                 TakeLife = true;
                 Target.GetComponent<LifePoint>().DeleteLife = true;
             }
-            if (TakeLife ||/*game win*/gameOC.gameClear ||/*game lose*/ Target.GetComponent<GameManage>().Over)
+            if (TakeLife ||/*game win*/gameOC.GameClear ||/*game lose*/ Target.GetComponent<GameManage>().Over)
             {
                 Destroy(this.gameObject);
             }
@@ -66,6 +70,7 @@ public class Suraimu : MonoBehaviour {
         if (IsDeath) 
         {
             StartCoroutine("DeathPross",1f);
+            
         }
 
     }
@@ -75,6 +80,13 @@ public class Suraimu : MonoBehaviour {
         //顔の変換
         sumface.SetActive(false);
         deathface.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        iTween.ScaleTo(this.gameObject, new Vector3(0, 0, 0), 0.5f);
+        yield return new WaitForSeconds(0.1f);
+        if (!GetComponent<ParticleSystem>().isPlaying)
+        {
+            GetComponent<ParticleSystem>().Play();
+        }
         yield return new WaitForSeconds(0.2f);
         //自分削除
         Destroy(gameObject);
