@@ -19,7 +19,7 @@ public class PointCheck : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         point = _getButton._point;
-        this.GetComponent<Text>().text = point + "/25";
+        this.GetComponent<Text>().text = point + "/"+GoalPoint;
         if (point >= GoalPoint&&!GameClear)
         {
             GameClear = true;

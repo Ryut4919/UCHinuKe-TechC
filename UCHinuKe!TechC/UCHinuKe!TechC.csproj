@@ -92,9 +92,16 @@
     <Compile Include="Assets\Sript\GameManage.cs" />
     <Compile Include="Assets\Sript\GetButton.cs" />
     <Compile Include="Assets\Sript\LifePoint.cs" />
+    <Compile Include="Assets\Sript\PointCheck.cs" />
     <Compile Include="Assets\Sript\Scop.cs" />
     <Compile Include="Assets\Sript\Suraimu.cs" />
-    <Compile Include="Assets\Sript\TimerControl.cs" />
+    <Compile Include="Assets\iTween\Sample\MoveSample.cs" />
+    <Compile Include="Assets\iTween\Sample\RotateSample.cs" />
+    <Compile Include="Assets\iTween\Sample\SampleInfo.cs" />
+    <Compile Include="Assets\iTween\iTween.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

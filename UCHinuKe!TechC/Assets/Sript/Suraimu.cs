@@ -83,9 +83,9 @@ public class Suraimu : MonoBehaviour {
         yield return new WaitForSeconds(0.2f);
         iTween.ScaleTo(this.gameObject, new Vector3(0, 0, 0), 0.5f);
         yield return new WaitForSeconds(0.1f);
-        if (!GetComponent<ParticleSystem>().isPlaying)
+        if (!_Star.GetComponent<ParticleSystem>().isPlaying)
         {
-            GetComponent<ParticleSystem>().Play();
+            _Star.GetComponent<ParticleSystem>().Play();
         }
         yield return new WaitForSeconds(0.2f);
         //自分削除

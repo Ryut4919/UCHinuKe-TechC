@@ -52,14 +52,13 @@ public class GameManage : MonoBehaviour {
             ControlWLScene.SetActive(true);
             ControlWLScene.transform.GetChild(0).GetComponent<Text>().text = "ゲーム失敗";
             ClearAll();
-           //call losescene;
+           
         }
         #endregion
 
         #region Getpoint点数を取得
         else if (_PointCount.GetComponent<PointCheck>().GameClear)
         {
-            
             Debug.Log("ゲームクリアー！！");
             //game win
             _suraimuCreate.GameOver = true;
