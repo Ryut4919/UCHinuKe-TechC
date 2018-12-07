@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Scop : MonoBehaviour {
     
-    Vector3 Dir;
+    //移動速度
     public float MoveSpd=5.0f;
+    //ゲームが停止確認用
     public bool gamestop=false;
 	// Use this for initialization
 	void Start () {
         
-       // this.transform.position = Input.mousePosition;
 	}
 	
 	// Update is called once per frame

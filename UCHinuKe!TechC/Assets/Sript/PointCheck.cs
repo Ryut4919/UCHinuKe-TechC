@@ -4,11 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PointCheck : MonoBehaviour {
+
+    //ゲーム終了確認
     public bool GameClear = false;
-    public int GoalPoint = 25;
-    public int point;
+    //スライム目標撃破数
+    public int GoalPoint;
+    //今の撃破数
+    public int point =0;
     [SerializeField]
-    private GetButton _getButton;
+    private GameManage _GM;
     
 
 	// Use this for initialization
@@ -18,12 +22,16 @@ public class PointCheck : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        point = _getButton._point;
+        //ゲームマネージャーから今までの撃破数を取る
+        point = _GM.Point;
+        //撃破数の表示
         this.GetComponent<Text>().text = point + "/"+GoalPoint;
-        if (point >= GoalPoint&&!GameClear)
+        //撃破数が達成する場合
+        if (point >= GoalPoint )
         {
+            //ゲーム終了
             GameClear = true;
         }
-        
+
     }
 }

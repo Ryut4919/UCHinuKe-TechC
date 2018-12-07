@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CreateSuraimu : MonoBehaviour {
+
     [SerializeField]
     private PointCheck _pointNum;
     public Transform[] SuraimuPrefab;
+    //倒しスライムの数
     public int[] targetNum;
 
     public bool GameOver = false;
     bool CanCreate=false;
     bool showBadEnding = true;
+    //最初からスライムが出てくる用
     int i;
 
 	// Use this for initialization
@@ -52,7 +55,6 @@ public class CreateSuraimu : MonoBehaviour {
             //失敗
             if (showBadEnding)
             {
-                Debug.Log("Bye");
                 showBadEnding = false;
             }   
         }
@@ -61,12 +63,19 @@ public class CreateSuraimu : MonoBehaviour {
     {
         for (int i = 0; i < 4; i++)
         {
-            //Instantiate(SuraimuPrefab[Random.Range(0,3)], new Vector3(Random.Range(10.0f,-5.0f),Random.Range(4.0f,-4.0f), 0), Quaternion.identity);
             yield return new WaitForSeconds(2.5f);
             CanCreate = true;
         }
     }
-    //数、Xの最小範囲、Xの最大範囲、Yの最小範囲、Yの最大範囲、出る時間
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param 数="num"></param>
+    /// <param Xの最小範囲="min_X"></param>
+    /// <param Xの最大範囲="max_X"></param>
+    /// <param Yの最小範囲="min_y"></param>
+    /// <param Yの最大範囲="max_y"></param>
+    /// <param 出る時間="time"></param>
     private void create(int num, float min_X, float max_X, float min_y, float max_y, float time)
     {
         if (GameObject.FindGameObjectsWithTag("Red").Length + GameObject.FindGameObjectsWithTag("Yellow").Length +
