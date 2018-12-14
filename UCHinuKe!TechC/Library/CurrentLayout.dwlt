@@ -133,7 +133,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 492}
   m_MaxSize: {x: 22012, y: 14042}
   vertical: 1
-  controlID: 90
+  controlID: 23
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 492}
   m_MaxSize: {x: 22012, y: 14042}
   vertical: 0
-  controlID: 91
+  controlID: 24
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -316,21 +316,21 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: e072ffff5873ffff2a74ffff18f8ffffc6f8ffff98f9ffffe0fbffff00000000
+    m_ExpandedIDs: 3cfafcffe8fafcffbafbfcff7015fdff2016fdfff616fdff061ffdffb61ffdff8820fdffb025fdff6026fdff3627fdffa28ffdff5890fdff2a91fdffe0fbffff000000005426000072260000103500003e350000723c0000ba3c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Control
+      m_OriginalName: Control
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: -38602
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 9}
     m_SearchString: 
@@ -376,18 +376,18 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Image
+    - Assets/Prefab
   m_ViewMode: 1
   m_StartGridSize: 32
   m_LastFolders:
-  - Assets/Image
+  - Assets/Prefab
   m_LastFoldersGridSize: 32
   m_LastProjectPath: C:\Users\Ryut lai\Documents\GitHub\UCHinuKe-TechC\UCHinuKe!TechC
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 92250000
-    m_LastClickedID: 9618
+    m_SelectedIDs: e4250000
+    m_LastClickedID: 9700
     m_ExpandedIDs: 0000000006250000922500003e27000040270000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -444,21 +444,21 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: 422b0000e82a0000062b0000182b0000ce2fffff2c340000d2480000ba2b00001438ffff102d0000b64dfcfffc2700002c260000ce030200782f0000b82b0000dc2b0000b43400006ea4000016330000463100000e2c0000122c00005a2500001e270000d4f1fcffb4260000b2330000000000003c340000c6250000ee250000a82500004c25000058250000
+    m_ExpandedInstanceIDs: 422b0000e82a0000062b0000182b0000ce2fffff2c340000d2480000ba2b00001438ffff102d0000b64dfcfffc2700002c260000ce030200782f0000b82b0000dc2b0000b43400006ea4000016330000463100000e2c0000122c00005a2500001e270000d4f1fcffb4260000b23300003c340000c6250000ee250000a82500004c25000058250000000000007e350000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: GetButton
+      m_OriginalName: GetButton
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 1370
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_CreateAssetUtility:
@@ -498,14 +498,14 @@ MonoBehaviour:
     width: 415
     height: 710
   m_SceneLighting: 1
-  lastFramingTime: 784.3566009777815
+  lastFramingTime: 2344.2252193384447
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -5.9667215, y: -1.4439478, z: 0}
+    m_Target: {x: -378.1725, y: 268.22653, z: 0}
     speed: 2
-    m_Value: {x: -5.9667215, y: -1.4439478, z: 0}
+    m_Value: {x: -378.1725, y: 268.22653, z: 0}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -532,9 +532,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 21.236307
+    m_Target: 593.19867
     speed: 2
-    m_Value: 21.236307
+    m_Value: 593.19867
   m_Ortho:
     m_Target: 1
     speed: 2

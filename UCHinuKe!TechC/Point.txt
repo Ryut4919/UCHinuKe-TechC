@@ -1,0 +1,3 @@
+Max Point:3
+min Point:1
+gameOver:0
