@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManage : MonoBehaviour {
+
+    [SerializeField]
+    SSDataControl _ssDataControl;
+
+
     public CreateSuraimu _suraimuCreate;
     public GameObject ControlWLScene;
     
@@ -39,6 +44,11 @@ public class GameManage : MonoBehaviour {
     
     //スライムの撃破数
     public int Point;
+
+    private bool _gameClear;
+
+    //データを送る用
+    private bool Sended;
     
 
     void Start()
@@ -88,6 +98,7 @@ public class GameManage : MonoBehaviour {
                 //ゲームー終了パネルを表示
                 ControlWLScene.SetActive(true);
                 ControlWLScene.transform.GetChild(0).GetComponent<Text>().text = "ゲーム失敗";
+                
                 ClearAll();
                 
                 //Debug.Log("GameOver");
@@ -97,9 +108,8 @@ public class GameManage : MonoBehaviour {
 
         #region Getpoint点数を取得
         /*else*/
-        if (_PointCount.GetComponent<PointCheck>().GameClear)
+        if (_PointCount.GetComponent<PointCheck>().GameClear&&!_gameClear)
         {
-           // Debug.Log("ゲームクリアー！！");
             //game win
             //スクリプトにゲームー終了信号を出す
             _suraimuCreate.GameOver = true;
@@ -108,9 +118,33 @@ public class GameManage : MonoBehaviour {
             ControlWLScene.transform.GetChild(0).GetComponent<Text>().text = "ゲームクリアー！！";
             ControlWLScene.transform.GetChild(1).GetComponent<Text>().text = "点数:" + GetComponent<LifePoint>().LifeP;
             ControlWLScene.transform.GetChild(1).GetComponent<Text>().color = Color.black;
+            _gameClear = true; 
+            
             ClearAll();
         }
         #endregion
+
+        if (Sended)
+        {
+            SendDataTo();
+            Sended = false;
+        }
+    }
+
+    public void SendDataTo()
+    {
+
+            //今のゲームモード
+            int gameMode = 0;
+            //最大のゲームモード
+            int MaxMode = 1;
+            //取った点数
+            int gameScore = GetComponent<LifePoint>().LifeP;
+            //ゲーム最大点数
+            int MaxScore = 3;
+
+            _ssDataControl.SaveData(gameMode, MaxMode, gameScore, MaxScore);
+
     }
 
     void PanelC()
@@ -133,7 +167,11 @@ public class GameManage : MonoBehaviour {
         BigBig.SetActive(false);
         //撃破数を非表示
         _pointChecking.SetActive(false);
+
         StartCoroutine("CloseWindow");
+
+        Sended = true;
+
     }
 
     IEnumerator CloseWindow()

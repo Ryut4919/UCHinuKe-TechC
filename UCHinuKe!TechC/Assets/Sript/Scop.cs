@@ -20,7 +20,6 @@ public class Scop : MonoBehaviour {
         {
             var x = Input.GetAxis("JoyX") * MoveSpd;
             var y = Input.GetAxis("JoyY") * MoveSpd;
-
             transform.Translate(new Vector2(x, y));
         }
         else

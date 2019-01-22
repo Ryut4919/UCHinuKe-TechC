@@ -88,6 +88,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\SendSaveDataCustom\Scripts\Control\SSDataControl.cs" />
     <Compile Include="Assets\Sript\CreateSuraimu.cs" />
     <Compile Include="Assets\Sript\GameManage.cs" />
     <Compile Include="Assets\Sript\GetButton.cs" />
