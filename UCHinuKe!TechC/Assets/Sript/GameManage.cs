@@ -5,9 +5,14 @@ using UnityEngine.UI;
 
 public class GameManage : MonoBehaviour {
 
+    //データ保存用
     [SerializeField]
     SSDataControl _ssDataControl;
-
+    //効果音
+    [SerializeField]
+    AudioSource SE_audio;
+    [SerializeField]
+    GameObject _StartButton;
 
     public CreateSuraimu _suraimuCreate;
     public GameObject ControlWLScene;
@@ -49,6 +54,8 @@ public class GameManage : MonoBehaviour {
 
     //データを送る用
     private bool Sended;
+
+    public AudioClip[] _audio;
     
 
     void Start()
@@ -71,7 +78,7 @@ public class GameManage : MonoBehaviour {
             {
                 _text.text = "Start!!!";
                 //BGMをプレイしてない場合
-                if (!GetComponent<AudioSource>().isPlaying)
+                if (!GetComponent<AudioSource>().isPlaying&&!Clearall)
                 {
                     //BGMをプレイする
                     GetComponent<AudioSource>().Play();
@@ -98,9 +105,14 @@ public class GameManage : MonoBehaviour {
                 //ゲームー終了パネルを表示
                 ControlWLScene.SetActive(true);
                 ControlWLScene.transform.GetChild(0).GetComponent<Text>().text = "ゲーム失敗";
-                
+#region 失敗音
+                GetComponent<AudioSource>().Stop();
+                SE_audio.clip = _audio[1];
+                SE_audio.pitch = 0.6f;
+                SE_audio.Play();
+#endregion 
                 ClearAll();
-                
+  
                 //Debug.Log("GameOver");
             }
             #endregion
@@ -118,8 +130,15 @@ public class GameManage : MonoBehaviour {
             ControlWLScene.transform.GetChild(0).GetComponent<Text>().text = "ゲームクリアー！！";
             ControlWLScene.transform.GetChild(1).GetComponent<Text>().text = "点数:" + GetComponent<LifePoint>().LifeP;
             ControlWLScene.transform.GetChild(1).GetComponent<Text>().color = Color.black;
-            _gameClear = true; 
-            
+            _gameClear = true;
+
+            #region 勝利音
+            GetComponent<AudioSource>().Stop();
+            SE_audio.clip = _audio[0];
+            //SE_audio.pitch = 0.6f;
+            SE_audio.Play();
+            #endregion
+
             ClearAll();
         }
         #endregion
@@ -151,13 +170,27 @@ public class GameManage : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Joystick1Button1) && !PanelClose)
         {
-            //操作説明書を見えないところへ
-            iTween.MoveTo(_controlPanel, new Vector3(1550.0f, 418.0f, 0), 3.0f);
-            new WaitForSeconds(1f);
-            //カウントダウンを表示
-            _text.gameObject.SetActive(true);
-            PanelClose = true;
+            StartCoroutine("StartShow");
         }
+    }
+
+    IEnumerator StartShow()
+    {
+
+        iTween.ScaleBy(_StartButton, new Vector3(0,0,0), 1.5f);
+        //効果音のプレイする
+        if (!SE_audio.isPlaying)
+        {
+            SE_audio.Play();
+        }
+        yield return new WaitForSeconds(1.5f);
+        //操作説明書を見えないところへ
+        iTween.MoveTo(_controlPanel, new Vector3(1550.0f, 418.0f, 0), 3.0f);
+        yield return new WaitForSeconds(0.5f);
+        //カウントダウンを表示
+        _text.gameObject.SetActive(true);
+        PanelClose = true;
+        
     }
 
     void ClearAll()

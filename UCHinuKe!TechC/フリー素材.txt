@@ -1,6 +1,11 @@
-îwåiBGM01
+BGM
 https://dova-s.jp/bgm/play10120.html
 
 ITween
 https://assetstore.unity.com/packages/tools/animation/itween-84
 
+Button Sound Effect 09
+https://soundeffect-lab.info/sound/button/
+
+WinSE (HandClap02)
+https://soundeffect-lab.info/sound/voice/people.html
