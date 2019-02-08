@@ -26,27 +26,28 @@ public class CreateSuraimu : MonoBehaviour {
     {
         if (!GameOver)
         {
+            //-5,12 -4,4
             #region 数調整
-            //数、Xの最小範囲(-3)、Xの最大範囲(9.5)、Yの最小範囲(4.5)、Yの最大範囲(4.5)、出る時間
+            //数、Xの最小範囲(-5)、Xの最大範囲(12)、Yの最小範囲(4.5)、Yの最大範囲(4.5)、出る時間
             if (_pointNum.point <= targetNum[0])
             {
                 create(1, -2.0f, 3.0f, 2.5f, -2.5f, 1.2f);
             }
             else if (_pointNum.point <= targetNum[1] && _pointNum.point > targetNum[0])
             {
-                create(2, -2.5f, 7.0f, 4.0f, -4.4f, 1.0f);
+                create(2, -3.5f, 7.0f, 4.0f, -4.4f, 1.0f);
             }
             else if (_pointNum.point <= targetNum[2] && _pointNum.point > targetNum[1])
             {
-                create(2, -2.5f, 7.0f, 4.0f, -4.4f, 0.8f);
+                create(2, -4.0f, 9.0f, 4.0f, -4.4f, 0.8f);
             }
             else if (_pointNum.point <= targetNum[3] && _pointNum.point > targetNum[2])
             {
-                create(3, -2.5f, 7.0f, 4.0f, -4.4f, 0.7f);
+                create(3, -4.5f, 10.5f, 4.0f, -4.4f, 0.7f);
             }
             else if (_pointNum.point > targetNum[3])
             {
-                create(4, -3.0f, 9.5f, 4.5f, -5.0f, 0.6f);
+                create(4, -5.0f, 12f, 4.5f, -5.0f, 0.6f);
             }
             #endregion
         }

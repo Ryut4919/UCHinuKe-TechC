@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManage : MonoBehaviour {
 
@@ -60,8 +61,10 @@ public class GameManage : MonoBehaviour {
 
     void Start()
     {
+        Screen.SetResolution(1980, 980, true);
+
         //操作説明書を指定ところへ
-        iTween.MoveTo(_controlPanel, new Vector3(524.0f, 418.0f, 0), 3.0f);
+        iTween.MoveTo(_controlPanel, new Vector3(990.0f, 540.0f, 0), 3.0f);
     }
     
 	// Update is called once per frame
@@ -185,7 +188,7 @@ public class GameManage : MonoBehaviour {
         }
         yield return new WaitForSeconds(1.5f);
         //操作説明書を見えないところへ
-        iTween.MoveTo(_controlPanel, new Vector3(1550.0f, 418.0f, 0), 3.0f);
+        iTween.MoveTo(_controlPanel, new Vector3(2540.0f, 540.0f, 0), 3.0f);
         yield return new WaitForSeconds(0.5f);
         //カウントダウンを表示
         _text.gameObject.SetActive(true);
